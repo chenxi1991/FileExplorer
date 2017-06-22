@@ -33,6 +33,8 @@ public class MainActivity extends FragmentActivity {
     LinearLayout delete;
     @BindView(R.id.rename)
     LinearLayout rename;
+    @BindView(R.id.close)
+    ImageView close;
 
     private Animation right_in;
     private Animation right_out;
@@ -99,6 +101,14 @@ public class MainActivity extends FragmentActivity {
     @OnClick(R.id.rename)
     public void onRenameClicked() {
         getShowingListAdapter().renameSelectedFile();
+    }
+
+    /**
+     * 退出
+     */
+    @OnClick(R.id.close)
+    public void onViewClicked() {
+        finish();
     }
 
     /**
