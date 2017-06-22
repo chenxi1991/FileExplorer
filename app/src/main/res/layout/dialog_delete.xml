@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/dialog_rootView">
+
+    <TextView
+        android:id="@+id/dialog_file_info"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+        android:lines="1"
+        android:text="Delete selected file?" />
+
+    <include layout="@layout/horizontal_line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/cancel"
+            style="@style/textView_cancle"
+            android:layout_height="35dp"
+            android:text="Cancel" />
+
+        <include layout="@layout/vertical_line" />
+
+
+        <TextView
+            android:id="@+id/confirm"
+            style="@style/textView_confrim"
+            android:layout_height="35dp"
+            android:text="Delete" />
+    </LinearLayout>
+</LinearLayout>
