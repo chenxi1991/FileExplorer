@@ -123,8 +123,10 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
             @Override
             public boolean onLongClick(View v) {
                 //若已是选择模式则不再执行
-                if (!selectedModeEnabled)
+                if (!selectedModeEnabled) {
                     setSelectedModeEnabled(true);
+                    holder.itemView.performClick();
+                }
                 return false;
             }
         });
@@ -140,8 +142,8 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
                     holder.checkTag.setChecked(true);
                 }
                 //根据已选中item的数量控制重命名按钮是否可点击
-                mActivity.toggleRenameEnable((selectedItems.size() == 1));
-                mActivity.toggleDeleteEnable(selectedItems.size() > 0);
+                mActivity.setRenameEnable((selectedItems.size() == 1));
+                mActivity.setDeleteEnable(selectedItems.size() > 0);
             }
         });
     }
@@ -174,9 +176,9 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
         list.addAll(Utils.getChildFiles(folderFile));
         selectedItems.clear();
         selectedModeEnabled = false;
-        mActivity.toggleUtils(false);
-        mActivity.toggleDeleteEnable(false);
-        mActivity.toggleRenameEnable(false);
+        mActivity.setUtilsVisibility(false);
+        mActivity.setDeleteEnable(false);
+        mActivity.setRenameEnable(false);
         notifyDataSetChanged();
     }
 
@@ -186,7 +188,7 @@ public class ItemsAdapter extends RecyclerView.Adapter<ItemsAdapter.ViewHolder> 
      * @param enabled
      */
     public void setSelectedModeEnabled(boolean enabled) {
-        mActivity.toggleUtils(enabled);
+        mActivity.setUtilsVisibility(enabled);
         selectedItems.clear();
         selectedModeEnabled = enabled;
         notifyDataSetChanged();

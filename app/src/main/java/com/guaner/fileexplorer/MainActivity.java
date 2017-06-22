@@ -82,8 +82,8 @@ public class MainActivity extends FragmentActivity {
     @OnClick(R.id.cancel_selected)
     public void onCancelSelectClicked() {
         setSelectedModeEnabled(false);
-        toggleRenameEnable(false);
-        toggleDeleteEnable(false);
+        setRenameEnable(false);
+        setDeleteEnable(false);
 
     }
 
@@ -129,7 +129,7 @@ public class MainActivity extends FragmentActivity {
             container.getChildAt(container.getChildCount() - 1).startAnimation(left_in);
             container.getChildAt(container.getChildCount() - 2).startAnimation(left_out);
         }
-        toggleBackButton(container);
+        setBackButtonVisibility(container);
     }
 
     /**
@@ -141,7 +141,7 @@ public class MainActivity extends FragmentActivity {
             container.getChildAt(container.getChildCount() - 2).startAnimation(right_in);
             container.removeViewAt(container.getChildCount() - 1);
         }
-        toggleBackButton(container);
+        setBackButtonVisibility(container);
     }
 
     /**
@@ -149,7 +149,7 @@ public class MainActivity extends FragmentActivity {
      *
      * @param show
      */
-    public void toggleUtils(boolean show) {
+    public void setUtilsVisibility(boolean show) {
         if (show) {
             utils.setVisibility(View.VISIBLE);
             cancelSelected.setVisibility(View.VISIBLE);
@@ -157,7 +157,7 @@ public class MainActivity extends FragmentActivity {
         } else {
             utils.setVisibility(View.GONE);
             cancelSelected.setVisibility(View.GONE);
-            toggleBackButton(container);
+            setBackButtonVisibility(container);
         }
     }
 
@@ -166,7 +166,7 @@ public class MainActivity extends FragmentActivity {
      *
      * @param container
      */
-    private void toggleBackButton(RelativeLayout container) {
+    private void setBackButtonVisibility(RelativeLayout container) {
         if (container.getChildCount() > 1)
             back.setVisibility(View.VISIBLE);
         else
@@ -178,7 +178,7 @@ public class MainActivity extends FragmentActivity {
      *
      * @param enable
      */
-    public void toggleRenameEnable(boolean enable) {
+    public void setRenameEnable(boolean enable) {
         rename.setClickable(enable);
         rename.setEnabled(enable);
         if (enable) {
@@ -197,7 +197,7 @@ public class MainActivity extends FragmentActivity {
      *
      * @param enable
      */
-    public void toggleDeleteEnable(boolean enable) {
+    public void setDeleteEnable(boolean enable) {
         delete.setClickable(enable);
         delete.setEnabled(enable);
         if (enable) {
